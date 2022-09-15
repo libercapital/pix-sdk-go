@@ -14,10 +14,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/bank"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/errors"
-	bankMocks "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/mocks/bank"
-	servicesMocks "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/mocks/services"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/bank"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/errors"
+	bankMocks "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/mocks/bank"
+	servicesMocks "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/mocks/services"
 )
 
 func Test_Context_Authorize(t *testing.T) {
