@@ -12,10 +12,10 @@ import (
 
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/common"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/errors"
-	servicesMock "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/mocks/services"
-	authMock "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/mocks/services/auth"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/common"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/errors"
+	servicesMock "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/mocks/services"
+	authMock "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/mocks/services/auth"
 )
 
 type JSON map[string]any

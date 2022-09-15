@@ -6,7 +6,7 @@ stages:
 
 .modules_commom: &modules_commom
   variables:
-    REPO_NAME: gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk
+    REPO_NAME: gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git
   before_script:
     - mkdir -p $GOPATH/src/$(dirname $REPO_NAME)
     - ln -svf $CI_PROJECT_DIR $GOPATH/src/$REPO_NAME
