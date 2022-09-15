@@ -3,10 +3,10 @@ package pixsdk
 import (
 	"crypto/tls"
 
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/bank"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/services"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/services/auth"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/services/pix"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/bank"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services/auth"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services/pix"
 )
 
 type Service interface {

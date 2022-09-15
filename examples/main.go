@@ -4,8 +4,8 @@ import (
 	"log"
 	"time"
 
-	pixsdk "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/services/pix"
+	pixsdk "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services/pix"
 )
 
 func main() {

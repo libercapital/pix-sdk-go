@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/google/go-querystring/query"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk/common"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/common"
 )
 
 type DevolutionTime struct {
