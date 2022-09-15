@@ -36,7 +36,7 @@ func Test_Context_FindPix(t *testing.T) {
 		authService *authMock.Service
 	}
 
-	var now = time.Now().Truncate(time.Second)
+	var now = time.Now().Truncate(time.Second).UTC()
 
 	var tests = []struct {
 		name         string
