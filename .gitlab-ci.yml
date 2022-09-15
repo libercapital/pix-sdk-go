@@ -29,6 +29,8 @@ unit-test:
   <<: *modules_commom
   script:
     - go get ./...
+    - go get gotest.tools/gotestsum
+    - go install gotest.tools/gotestsum
     - make unit-test
 
 create_tag:
