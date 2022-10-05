@@ -43,10 +43,12 @@ func (c *Context) setupConfig(config Config) {
 	var baseService = services.NewBaseService(bank)
 	var authService = auth.NewAuthService(bank, baseService)
 	baseService.SetAuthorizer(authService)
+	var pixService = pix.NewPixService(baseService)
 	c.Config = config
 	c.Bank = bank
 	c.BaseService = baseService
 	c.AuthService = authService
+	c.PixService = pixService
 }
 
 func (c *Context) SetConfig(config Config) {
