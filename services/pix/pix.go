@@ -33,6 +33,8 @@ func (p pixServiceContext) ListPix(listPix ListPix) (ListPixResponse, error) {
 		switch response.StatusCode {
 		case 403:
 			return ListPixResponse{}, errors.ErrNotAllowed
+		case 404:
+			return ListPixResponse{}, errors.ErrEntityNotFound
 		default:
 			return ListPixResponse{}, errors.ErrUnknown
 		}
