@@ -12,6 +12,14 @@ type Service struct {
 	mock.Mock
 }
 
+type Service_Expecter struct {
+	mock *mock.Mock
+}
+
+func (_m *Service) EXPECT() *Service_Expecter {
+	return &Service_Expecter{mock: &_m.Mock}
+}
+
 // CreateCharge provides a mock function with given fields: create
 func (_m *Service) CreateCharge(create charge.CreateCharge) (*charge.Charge, error) {
 	ret := _m.Called(create)
@@ -33,6 +41,29 @@ func (_m *Service) CreateCharge(create charge.CreateCharge) (*charge.Charge, err
 	}
 
 	return r0, r1
+}
+
+// Service_CreateCharge_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateCharge'
+type Service_CreateCharge_Call struct {
+	*mock.Call
+}
+
+// CreateCharge is a helper method to define mock.On call
+//  - create charge.CreateCharge
+func (_e *Service_Expecter) CreateCharge(create interface{}) *Service_CreateCharge_Call {
+	return &Service_CreateCharge_Call{Call: _e.mock.On("CreateCharge", create)}
+}
+
+func (_c *Service_CreateCharge_Call) Run(run func(create charge.CreateCharge)) *Service_CreateCharge_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(charge.CreateCharge))
+	})
+	return _c
+}
+
+func (_c *Service_CreateCharge_Call) Return(_a0 *charge.Charge, _a1 error) *Service_CreateCharge_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
 }
 
 // FindCharge provides a mock function with given fields: txId, options
@@ -65,6 +96,37 @@ func (_m *Service) FindCharge(txId string, options ...*charge.FindChargeOption) 
 	return r0, r1
 }
 
+// Service_FindCharge_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'FindCharge'
+type Service_FindCharge_Call struct {
+	*mock.Call
+}
+
+// FindCharge is a helper method to define mock.On call
+//  - txId string
+//  - options ...*charge.FindChargeOption
+func (_e *Service_Expecter) FindCharge(txId interface{}, options ...interface{}) *Service_FindCharge_Call {
+	return &Service_FindCharge_Call{Call: _e.mock.On("FindCharge",
+		append([]interface{}{txId}, options...)...)}
+}
+
+func (_c *Service_FindCharge_Call) Run(run func(txId string, options ...*charge.FindChargeOption)) *Service_FindCharge_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		variadicArgs := make([]*charge.FindChargeOption, len(args)-1)
+		for i, a := range args[1:] {
+			if a != nil {
+				variadicArgs[i] = a.(*charge.FindChargeOption)
+			}
+		}
+		run(args[0].(string), variadicArgs...)
+	})
+	return _c
+}
+
+func (_c *Service_FindCharge_Call) Return(_a0 *charge.Charge, _a1 error) *Service_FindCharge_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
 // FindCharges provides a mock function with given fields: charges
 func (_m *Service) FindCharges(charges charge.ListCharges) (*charge.Charges, error) {
 	ret := _m.Called(charges)
@@ -86,6 +148,29 @@ func (_m *Service) FindCharges(charges charge.ListCharges) (*charge.Charges, err
 	}
 
 	return r0, r1
+}
+
+// Service_FindCharges_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'FindCharges'
+type Service_FindCharges_Call struct {
+	*mock.Call
+}
+
+// FindCharges is a helper method to define mock.On call
+//  - charges charge.ListCharges
+func (_e *Service_Expecter) FindCharges(charges interface{}) *Service_FindCharges_Call {
+	return &Service_FindCharges_Call{Call: _e.mock.On("FindCharges", charges)}
+}
+
+func (_c *Service_FindCharges_Call) Run(run func(charges charge.ListCharges)) *Service_FindCharges_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(charge.ListCharges))
+	})
+	return _c
+}
+
+func (_c *Service_FindCharges_Call) Return(_a0 *charge.Charges, _a1 error) *Service_FindCharges_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
 }
 
 type mockConstructorTestingTNewService interface {

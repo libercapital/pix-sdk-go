@@ -12,6 +12,14 @@ type ServiceAuthorizer struct {
 	mock.Mock
 }
 
+type ServiceAuthorizer_Expecter struct {
+	mock *mock.Mock
+}
+
+func (_m *ServiceAuthorizer) EXPECT() *ServiceAuthorizer_Expecter {
+	return &ServiceAuthorizer_Expecter{mock: &_m.Mock}
+}
+
 // Authorize provides a mock function with given fields:
 func (_m *ServiceAuthorizer) Authorize() (bank.Authorization, error) {
 	ret := _m.Called()
@@ -31,6 +39,28 @@ func (_m *ServiceAuthorizer) Authorize() (bank.Authorization, error) {
 	}
 
 	return r0, r1
+}
+
+// ServiceAuthorizer_Authorize_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Authorize'
+type ServiceAuthorizer_Authorize_Call struct {
+	*mock.Call
+}
+
+// Authorize is a helper method to define mock.On call
+func (_e *ServiceAuthorizer_Expecter) Authorize() *ServiceAuthorizer_Authorize_Call {
+	return &ServiceAuthorizer_Authorize_Call{Call: _e.mock.On("Authorize")}
+}
+
+func (_c *ServiceAuthorizer_Authorize_Call) Run(run func()) *ServiceAuthorizer_Authorize_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run()
+	})
+	return _c
+}
+
+func (_c *ServiceAuthorizer_Authorize_Call) Return(_a0 bank.Authorization, _a1 error) *ServiceAuthorizer_Authorize_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
 }
 
 type mockConstructorTestingTNewServiceAuthorizer interface {

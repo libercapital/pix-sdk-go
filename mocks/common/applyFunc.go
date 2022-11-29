@@ -13,9 +13,40 @@ type applyFunc struct {
 	mock.Mock
 }
 
+type applyFunc_Expecter struct {
+	mock *mock.Mock
+}
+
+func (_m *applyFunc) EXPECT() *applyFunc_Expecter {
+	return &applyFunc_Expecter{mock: &_m.Mock}
+}
+
 // Execute provides a mock function with given fields: r
 func (_m *applyFunc) Execute(r *http.Request) {
 	_m.Called(r)
+}
+
+// applyFunc_Execute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Execute'
+type applyFunc_Execute_Call struct {
+	*mock.Call
+}
+
+// Execute is a helper method to define mock.On call
+//  - r *http.Request
+func (_e *applyFunc_Expecter) Execute(r interface{}) *applyFunc_Execute_Call {
+	return &applyFunc_Execute_Call{Call: _e.mock.On("Execute", r)}
+}
+
+func (_c *applyFunc_Execute_Call) Run(run func(r *http.Request)) *applyFunc_Execute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(*http.Request))
+	})
+	return _c
+}
+
+func (_c *applyFunc_Execute_Call) Return() *applyFunc_Execute_Call {
+	_c.Call.Return()
+	return _c
 }
 
 type mockConstructorTestingTnewApplyFunc interface {

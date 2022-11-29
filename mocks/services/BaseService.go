@@ -19,6 +19,14 @@ type BaseService struct {
 	mock.Mock
 }
 
+type BaseService_Expecter struct {
+	mock *mock.Mock
+}
+
+func (_m *BaseService) EXPECT() *BaseService_Expecter {
+	return &BaseService_Expecter{mock: &_m.Mock}
+}
+
 // CreateRequest provides a mock function with given fields: url, method, body
 func (_m *BaseService) CreateRequest(url string, method string, body io.Reader) (*http.Request, error) {
 	ret := _m.Called(url, method, body)
@@ -40,6 +48,31 @@ func (_m *BaseService) CreateRequest(url string, method string, body io.Reader) 
 	}
 
 	return r0, r1
+}
+
+// BaseService_CreateRequest_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'CreateRequest'
+type BaseService_CreateRequest_Call struct {
+	*mock.Call
+}
+
+// CreateRequest is a helper method to define mock.On call
+//  - url string
+//  - method string
+//  - body io.Reader
+func (_e *BaseService_Expecter) CreateRequest(url interface{}, method interface{}, body interface{}) *BaseService_CreateRequest_Call {
+	return &BaseService_CreateRequest_Call{Call: _e.mock.On("CreateRequest", url, method, body)}
+}
+
+func (_c *BaseService_CreateRequest_Call) Run(run func(url string, method string, body io.Reader)) *BaseService_CreateRequest_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(string), args[1].(string), args[2].(io.Reader))
+	})
+	return _c
+}
+
+func (_c *BaseService_CreateRequest_Call) Return(_a0 *http.Request, _a1 error) *BaseService_CreateRequest_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
 }
 
 // Execute provides a mock function with given fields: r, options
@@ -72,9 +105,63 @@ func (_m *BaseService) Execute(r *http.Request, options ...common.RequestOption)
 	return r0, r1
 }
 
+// BaseService_Execute_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'Execute'
+type BaseService_Execute_Call struct {
+	*mock.Call
+}
+
+// Execute is a helper method to define mock.On call
+//  - r *http.Request
+//  - options ...common.RequestOption
+func (_e *BaseService_Expecter) Execute(r interface{}, options ...interface{}) *BaseService_Execute_Call {
+	return &BaseService_Execute_Call{Call: _e.mock.On("Execute",
+		append([]interface{}{r}, options...)...)}
+}
+
+func (_c *BaseService_Execute_Call) Run(run func(r *http.Request, options ...common.RequestOption)) *BaseService_Execute_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		variadicArgs := make([]common.RequestOption, len(args)-1)
+		for i, a := range args[1:] {
+			if a != nil {
+				variadicArgs[i] = a.(common.RequestOption)
+			}
+		}
+		run(args[0].(*http.Request), variadicArgs...)
+	})
+	return _c
+}
+
+func (_c *BaseService_Execute_Call) Return(_a0 *http.Response, _a1 error) *BaseService_Execute_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
 // SetAuthorizer provides a mock function with given fields: authorizer
 func (_m *BaseService) SetAuthorizer(authorizer services.ServiceAuthorizer) {
 	_m.Called(authorizer)
+}
+
+// BaseService_SetAuthorizer_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetAuthorizer'
+type BaseService_SetAuthorizer_Call struct {
+	*mock.Call
+}
+
+// SetAuthorizer is a helper method to define mock.On call
+//  - authorizer services.ServiceAuthorizer
+func (_e *BaseService_Expecter) SetAuthorizer(authorizer interface{}) *BaseService_SetAuthorizer_Call {
+	return &BaseService_SetAuthorizer_Call{Call: _e.mock.On("SetAuthorizer", authorizer)}
+}
+
+func (_c *BaseService_SetAuthorizer_Call) Run(run func(authorizer services.ServiceAuthorizer)) *BaseService_SetAuthorizer_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(services.ServiceAuthorizer))
+	})
+	return _c
+}
+
+func (_c *BaseService_SetAuthorizer_Call) Return() *BaseService_SetAuthorizer_Call {
+	_c.Call.Return()
+	return _c
 }
 
 type mockConstructorTestingTNewBaseService interface {
