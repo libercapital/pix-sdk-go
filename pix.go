@@ -1,7 +1,9 @@
 package pixsdk
 
 import (
+	"context"
 	"crypto/tls"
+	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services/webhook"
 
 	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/bank"
 	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services"
@@ -11,15 +13,17 @@ import (
 
 type Service interface {
 	pix.Service
+	webhook.Service
 	SetConfig(config Config)
 }
 
 type Context struct {
-	Config      Config
-	Bank        bank.Bank
-	BaseService services.BaseService
-	AuthService auth.Service
-	PixService  pix.Service
+	Config         Config
+	Bank           bank.Bank
+	BaseService    services.BaseService
+	AuthService    auth.Service
+	PixService     pix.Service
+	WebhookService webhook.Service
 }
 
 type Config struct {
@@ -28,6 +32,18 @@ type Config struct {
 	ClientId     string
 	ClientSecret string
 	Certificate  *tls.Certificate
+}
+
+func (c *Context) CreateWebhook(ctx context.Context, key string, webhook webhook.CreateWebhook) error {
+	return c.WebhookService.CreateWebhook(ctx, key, webhook)
+}
+
+func (c *Context) FindWebhook(ctx context.Context, key string) (webhook.Webhook, error) {
+	return c.WebhookService.FindWebhook(ctx, key)
+}
+
+func (c *Context) DeleteWebhook(ctx context.Context, key string) error {
+	return c.WebhookService.DeleteWebhook(ctx, key)
 }
 
 func (c *Context) FindPix(endToEndId string) (pix.Pix, error) {
@@ -44,11 +60,14 @@ func (c *Context) setupConfig(config Config) {
 	var authService = auth.NewAuthService(bank, baseService)
 	baseService.SetAuthorizer(authService)
 	var pixService = pix.NewPixService(baseService)
+	var webhookService = webhook.NewWebhookService(baseService)
+
 	c.Config = config
 	c.Bank = bank
 	c.BaseService = baseService
 	c.AuthService = authService
 	c.PixService = pixService
+	c.WebhookService = webhookService
 }
 
 func (c *Context) SetConfig(config Config) {

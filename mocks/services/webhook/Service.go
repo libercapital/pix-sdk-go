@@ -6,9 +6,6 @@ import (
 	context "context"
 
 	mock "github.com/stretchr/testify/mock"
-	pixsdk "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git"
-	pix "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services/pix"
-
 	webhook "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services/webhook"
 )
 
@@ -102,50 +99,6 @@ func (_c *Service_DeleteWebhook_Call) Return(_a0 error) *Service_DeleteWebhook_C
 	return _c
 }
 
-// FindPix provides a mock function with given fields: e2eId
-func (_m *Service) FindPix(e2eId string) (pix.Pix, error) {
-	ret := _m.Called(e2eId)
-
-	var r0 pix.Pix
-	if rf, ok := ret.Get(0).(func(string) pix.Pix); ok {
-		r0 = rf(e2eId)
-	} else {
-		r0 = ret.Get(0).(pix.Pix)
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(string) error); ok {
-		r1 = rf(e2eId)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// Service_FindPix_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'FindPix'
-type Service_FindPix_Call struct {
-	*mock.Call
-}
-
-// FindPix is a helper method to define mock.On call
-//  - e2eId string
-func (_e *Service_Expecter) FindPix(e2eId interface{}) *Service_FindPix_Call {
-	return &Service_FindPix_Call{Call: _e.mock.On("FindPix", e2eId)}
-}
-
-func (_c *Service_FindPix_Call) Run(run func(e2eId string)) *Service_FindPix_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(string))
-	})
-	return _c
-}
-
-func (_c *Service_FindPix_Call) Return(_a0 pix.Pix, _a1 error) *Service_FindPix_Call {
-	_c.Call.Return(_a0, _a1)
-	return _c
-}
-
 // FindWebhook provides a mock function with given fields: ctx, key
 func (_m *Service) FindWebhook(ctx context.Context, key string) (webhook.Webhook, error) {
 	ret := _m.Called(ctx, key)
@@ -188,78 +141,6 @@ func (_c *Service_FindWebhook_Call) Run(run func(ctx context.Context, key string
 
 func (_c *Service_FindWebhook_Call) Return(_a0 webhook.Webhook, _a1 error) *Service_FindWebhook_Call {
 	_c.Call.Return(_a0, _a1)
-	return _c
-}
-
-// ListPix provides a mock function with given fields: listPix
-func (_m *Service) ListPix(listPix pix.ListPix) (pix.ListPixResponse, error) {
-	ret := _m.Called(listPix)
-
-	var r0 pix.ListPixResponse
-	if rf, ok := ret.Get(0).(func(pix.ListPix) pix.ListPixResponse); ok {
-		r0 = rf(listPix)
-	} else {
-		r0 = ret.Get(0).(pix.ListPixResponse)
-	}
-
-	var r1 error
-	if rf, ok := ret.Get(1).(func(pix.ListPix) error); ok {
-		r1 = rf(listPix)
-	} else {
-		r1 = ret.Error(1)
-	}
-
-	return r0, r1
-}
-
-// Service_ListPix_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPix'
-type Service_ListPix_Call struct {
-	*mock.Call
-}
-
-// ListPix is a helper method to define mock.On call
-//  - listPix pix.ListPix
-func (_e *Service_Expecter) ListPix(listPix interface{}) *Service_ListPix_Call {
-	return &Service_ListPix_Call{Call: _e.mock.On("ListPix", listPix)}
-}
-
-func (_c *Service_ListPix_Call) Run(run func(listPix pix.ListPix)) *Service_ListPix_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(pix.ListPix))
-	})
-	return _c
-}
-
-func (_c *Service_ListPix_Call) Return(_a0 pix.ListPixResponse, _a1 error) *Service_ListPix_Call {
-	_c.Call.Return(_a0, _a1)
-	return _c
-}
-
-// SetConfig provides a mock function with given fields: config
-func (_m *Service) SetConfig(config pixsdk.Config) {
-	_m.Called(config)
-}
-
-// Service_SetConfig_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'SetConfig'
-type Service_SetConfig_Call struct {
-	*mock.Call
-}
-
-// SetConfig is a helper method to define mock.On call
-//  - config pixsdk.Config
-func (_e *Service_Expecter) SetConfig(config interface{}) *Service_SetConfig_Call {
-	return &Service_SetConfig_Call{Call: _e.mock.On("SetConfig", config)}
-}
-
-func (_c *Service_SetConfig_Call) Run(run func(config pixsdk.Config)) *Service_SetConfig_Call {
-	_c.Call.Run(func(args mock.Arguments) {
-		run(args[0].(pixsdk.Config))
-	})
-	return _c
-}
-
-func (_c *Service_SetConfig_Call) Return() *Service_SetConfig_Call {
-	_c.Call.Return()
 	return _c
 }
 

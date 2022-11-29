@@ -12,6 +12,14 @@ type Service struct {
 	mock.Mock
 }
 
+type Service_Expecter struct {
+	mock *mock.Mock
+}
+
+func (_m *Service) EXPECT() *Service_Expecter {
+	return &Service_Expecter{mock: &_m.Mock}
+}
+
 // FindPix provides a mock function with given fields: e2eId
 func (_m *Service) FindPix(e2eId string) (pix.Pix, error) {
 	ret := _m.Called(e2eId)
@@ -33,6 +41,29 @@ func (_m *Service) FindPix(e2eId string) (pix.Pix, error) {
 	return r0, r1
 }
 
+// Service_FindPix_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'FindPix'
+type Service_FindPix_Call struct {
+	*mock.Call
+}
+
+// FindPix is a helper method to define mock.On call
+//  - e2eId string
+func (_e *Service_Expecter) FindPix(e2eId interface{}) *Service_FindPix_Call {
+	return &Service_FindPix_Call{Call: _e.mock.On("FindPix", e2eId)}
+}
+
+func (_c *Service_FindPix_Call) Run(run func(e2eId string)) *Service_FindPix_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(string))
+	})
+	return _c
+}
+
+func (_c *Service_FindPix_Call) Return(_a0 pix.Pix, _a1 error) *Service_FindPix_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
+}
+
 // ListPix provides a mock function with given fields: listPix
 func (_m *Service) ListPix(listPix pix.ListPix) (pix.ListPixResponse, error) {
 	ret := _m.Called(listPix)
@@ -52,6 +83,29 @@ func (_m *Service) ListPix(listPix pix.ListPix) (pix.ListPixResponse, error) {
 	}
 
 	return r0, r1
+}
+
+// Service_ListPix_Call is a *mock.Call that shadows Run/Return methods with type explicit version for method 'ListPix'
+type Service_ListPix_Call struct {
+	*mock.Call
+}
+
+// ListPix is a helper method to define mock.On call
+//  - listPix pix.ListPix
+func (_e *Service_Expecter) ListPix(listPix interface{}) *Service_ListPix_Call {
+	return &Service_ListPix_Call{Call: _e.mock.On("ListPix", listPix)}
+}
+
+func (_c *Service_ListPix_Call) Run(run func(listPix pix.ListPix)) *Service_ListPix_Call {
+	_c.Call.Run(func(args mock.Arguments) {
+		run(args[0].(pix.ListPix))
+	})
+	return _c
+}
+
+func (_c *Service_ListPix_Call) Return(_a0 pix.ListPixResponse, _a1 error) *Service_ListPix_Call {
+	_c.Call.Return(_a0, _a1)
+	return _c
 }
 
 type mockConstructorTestingTNewService interface {
