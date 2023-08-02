@@ -28,6 +28,19 @@ type Pix struct {
 	Key        string       `json:"chave"`
 	PayerInfo  string       `json:"infoPagador"`
 	Devolution []Devolution `json:"devolucoes"`
+	Components *Component   `json:"componentesValor"`
+}
+
+type Component struct {
+	Original  *ValueComponentValue `json:"original,omitempty"`
+	Penalty   *ValueComponentValue `json:"multa,omitempty"`
+	Discount  *ValueComponentValue `json:"desconto,omitempty"`
+	Interest  *ValueComponentValue `json:"juros,omitempty"`
+	Deduction *ValueComponentValue `json:"abatimento,omitempty"`
+}
+
+type ValueComponentValue struct {
+	Amount string `json:"valor"`
 }
 
 type PixResponse struct {
