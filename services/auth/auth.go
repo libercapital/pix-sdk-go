@@ -3,10 +3,10 @@ package auth
 import (
 	"time"
 
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/bank"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/common"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/errors"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services"
+	"github.com/libercapital/pix-sdk-go/bank"
+	"github.com/libercapital/pix-sdk-go/common"
+	"github.com/libercapital/pix-sdk-go/errors"
+	"github.com/libercapital/pix-sdk-go/services"
 )
 
 type Service interface {

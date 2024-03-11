@@ -2,7 +2,7 @@
 Use `go get` to retrieve the SDK to add it to your `GOPATH` workspace, or
 project's Go module dependencies.
 
-	go get gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git
+	go get github.com/libercapital/pix-sdk-go
 
 ### Examples
 
@@ -11,8 +11,8 @@ import (
 	"log"
 	"time"
 
-	pixsdk "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services/pix"
+	pixsdk "github.com/libercapital/pix-sdk-go"
+	"github.com/libercapital/pix-sdk-go/services/pix"
 )
 
 func main() {

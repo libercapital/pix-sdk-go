@@ -13,7 +13,7 @@ type PixTime struct {
 var formatLayout = "2006-01-02T15:04:05"
 
 func (p *PixTime) UnmarshalJSON(data []byte) error {
-	parsedTime, err := time.Parse(formatLayout, strings.Trim(string(data), "\""))
+	parsedTime, err := time.Parse(time.RFC3339, strings.Trim(string(data), "\""))
 	if err != nil {
 		return err
 	}

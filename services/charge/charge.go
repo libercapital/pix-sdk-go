@@ -4,8 +4,8 @@ import (
 	"fmt"
 
 	"github.com/google/go-querystring/query"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/common"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services"
+	"github.com/libercapital/pix-sdk-go/common"
+	"github.com/libercapital/pix-sdk-go/services"
 )
 
 type Service interface {

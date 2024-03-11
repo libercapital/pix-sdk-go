@@ -10,12 +10,12 @@ import (
 	"testing"
 	"time"
 
+	"github.com/libercapital/pix-sdk-go/common"
+	"github.com/libercapital/pix-sdk-go/errors"
+	servicesMock "github.com/libercapital/pix-sdk-go/mocks/services"
+	authMock "github.com/libercapital/pix-sdk-go/mocks/services/auth"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/common"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/errors"
-	servicesMock "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/mocks/services"
-	authMock "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/mocks/services/auth"
 )
 
 type JSON map[string]any
@@ -59,8 +59,8 @@ func Test_Context_FindPix(t *testing.T) {
 			want: Pix{
 				E2EId: "E7268236923237655FX723",
 				TxId:  "TESTE0001",
-				Value: 1,
-				Time:  &now,
+				Value: "1",
+				Time:  now,
 				Key:   "pix@bavabank.com.br",
 			},
 			mockBehavior: func(f fields, a *args) {
@@ -216,15 +216,13 @@ func Test_Context_ListPix(t *testing.T) {
 						TotalItems:   1,
 					},
 				},
-				Pix: []PixResponse{
+				Pix: []Pix{
 					{
-						Pix: Pix{
-							E2EId: "E7268236923237655FX723",
-							TxId:  "TESTE0001",
-							Value: 1,
-							Time:  &now,
-							Key:   "pix@bavabank.com.br",
-						},
+						E2EId: "E7268236923237655FX723",
+						TxId:  "TESTE0001",
+						Value: "1",
+						Time:  now,
+						Key:   "pix@bavabank.com.br",
 					},
 				},
 			},

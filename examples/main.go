@@ -4,8 +4,8 @@ import (
 	"log"
 	"time"
 
-	pixsdk "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services/pix"
+	pixsdk "github.com/libercapital/pix-sdk-go"
+	"github.com/libercapital/pix-sdk-go/services/pix"
 )
 
 func main() {
@@ -34,6 +34,6 @@ func main() {
 		log.Fatal(err.Error())
 	}
 	for _, px := range listPix.Pix {
-		log.Printf("E2E: %s, TxId: %s, Data: %s, Valor: %f\n", px.Pix.E2EId, px.Pix.TxId, px.Pix.Time.Format(time.RFC3339), px.Pix.Value)
+		log.Printf("E2E: %s, TxId: %s, Data: %s, Valor: %f\n", px.E2EId, px.TxId, px.Time.Format(time.RFC3339), px.Value)
 	}
 }

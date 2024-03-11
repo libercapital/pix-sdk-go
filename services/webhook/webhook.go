@@ -5,11 +5,12 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/bavalogs.git"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/common"
-	pixErrors "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/errors"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/services"
 	"net/http"
+
+	liberlogger "github.com/libercapital/liber-logger-go"
+	"github.com/libercapital/pix-sdk-go/common"
+	pixErrors "github.com/libercapital/pix-sdk-go/errors"
+	"github.com/libercapital/pix-sdk-go/services"
 )
 
 type Service interface {
@@ -95,7 +96,7 @@ func (w webhookService) CreateWebhook(ctx context.Context, key string, webhook C
 		parsedResponse, errResponse := w.parseErrorResponse(response)
 
 		if errResponse == nil {
-			bavalogs.
+			liberlogger.
 				Warn(ctx).
 				Interface("response", parsedResponse).
 				Msg("error to create webhook")
@@ -126,7 +127,7 @@ func (w webhookService) FindWebhook(ctx context.Context, key string) (Webhook, e
 		parsedResponse, errResponse := w.parseErrorResponse(response)
 
 		if errResponse == nil {
-			bavalogs.
+			liberlogger.
 				Warn(ctx).
 				Interface("response", parsedResponse).
 				Msg("error to find webhook")
@@ -165,7 +166,7 @@ func (w webhookService) DeleteWebhook(ctx context.Context, key string) error {
 		parsedResponse, errResponse := w.parseErrorResponse(response)
 
 		if errResponse == nil {
-			bavalogs.
+			liberlogger.
 				Warn(ctx).
 				Interface("response", parsedResponse).
 				Msg("error to delete webhook")

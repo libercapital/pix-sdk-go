@@ -12,12 +12,12 @@ import (
 
 	_ "embed"
 
+	"github.com/libercapital/pix-sdk-go/bank"
+	"github.com/libercapital/pix-sdk-go/errors"
+	bankMocks "github.com/libercapital/pix-sdk-go/mocks/bank"
+	servicesMocks "github.com/libercapital/pix-sdk-go/mocks/services"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/mock"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/bank"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/errors"
-	bankMocks "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/mocks/bank"
-	servicesMocks "gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/mocks/services"
 )
 
 func Test_Context_Authorize(t *testing.T) {

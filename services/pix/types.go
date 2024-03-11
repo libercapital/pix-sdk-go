@@ -4,7 +4,7 @@ import (
 	"time"
 
 	"github.com/google/go-querystring/query"
-	"gitlab.com/bavatech/architecture/software/libs/go-modules/pix-sdk.git/common"
+	"github.com/libercapital/pix-sdk-go/common"
 )
 
 type DevolutionTime struct {
@@ -23,8 +23,8 @@ type Devolution struct {
 type Pix struct {
 	E2EId      string       `json:"endToEndId"`
 	TxId       string       `json:"txid"`
-	Value      float32      `json:"valor"`
-	Time       *time.Time   `json:"horario"`
+	Value      string       `json:"valor"`
+	Time       time.Time    `json:"horario"`
 	Key        string       `json:"chave"`
 	PayerInfo  string       `json:"infoPagador"`
 	Devolution []Devolution `json:"devolucoes"`
@@ -43,13 +43,9 @@ type ValueComponentValue struct {
 	Amount string `json:"valor"`
 }
 
-type PixResponse struct {
-	Pix Pix `json:"pix"`
-}
-
 type ListPixResponse struct {
 	Parameters *ListPixParameterResponse `json:"parametros"`
-	Pix        []PixResponse             `json:"pix"`
+	Pix        []Pix                     `json:"pix"`
 }
 
 type ListPixParameterResponse struct {
