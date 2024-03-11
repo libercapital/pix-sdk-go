@@ -47,7 +47,7 @@ func Test_Context_FindPix(t *testing.T) {
 		mockBehavior func(fields, *args)
 	}{
 		{
-			name: "sucessful find pix",
+			name: "successful find pix",
 			fields: fields{
 				baseService: &servicesMock.BaseService{},
 				authService: &authMock.Service{},
@@ -75,7 +75,7 @@ func Test_Context_FindPix(t *testing.T) {
 					Return(&http.Response{StatusCode: http.StatusOK, Body: makeJson(JSON{
 						"endToEndId": a.e2eId,
 						"txId":       "TESTE0001",
-						"valor":      1,
+						"valor":      "1",
 						"horario":    now.Format(time.RFC3339),
 						"chave":      "pix@bavabank.com.br",
 					})}, nil)
@@ -184,7 +184,6 @@ func Test_Context_ListPix(t *testing.T) {
 	var now = time.Now().Round(time.Second).UTC()
 
 	var dateLayout = "2006-01-02T15:04:05Z"
-	var dateLayout2 = "2006-01-02T15:04:05"
 
 	var tests = []struct {
 		name         string
@@ -239,8 +238,8 @@ func Test_Context_ListPix(t *testing.T) {
 						StatusCode: http.StatusOK,
 						Body: makeJson(JSON{
 							"parametros": JSON{
-								"inicio": a.startDate.Format(dateLayout2),
-								"fim":    a.startDate.Format(dateLayout2),
+								"inicio": a.startDate.Format(time.RFC3339),
+								"fim":    a.startDate.Format(time.RFC3339),
 								"paginacao": JSON{
 									"paginaAtual":            0,
 									"itensPorPagina":         100,
@@ -250,13 +249,11 @@ func Test_Context_ListPix(t *testing.T) {
 							},
 							"pix": []JSON{
 								{
-									"pix": JSON{
-										"endToEndId": "E7268236923237655FX723",
-										"txId":       "TESTE0001",
-										"valor":      1,
-										"horario":    now.Format(dateLayout),
-										"chave":      "pix@bavabank.com.br",
-									},
+									"endToEndId": "E7268236923237655FX723",
+									"txId":       "TESTE0001",
+									"valor":      "1",
+									"horario":    now.Format(time.RFC3339),
+									"chave":      "pix@bavabank.com.br",
 								},
 							},
 						}),

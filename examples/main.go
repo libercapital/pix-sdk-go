@@ -23,7 +23,8 @@ func main() {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-	log.Printf("E2E: %s, TxId: %s, Data: %s, Valor: %f\n", px.E2EId, px.TxId, px.Time.Format(time.RFC3339), px.Value)
+
+	log.Printf("E2E: %s, TxId: %s, Data: %s, Valor: %s\n", px.E2EId, px.TxId, px.Time.Format(time.RFC3339), px.Value)
 
 	// List Pix by between date
 	listPix, err := pixService.ListPix(pix.ListPix{
@@ -34,6 +35,6 @@ func main() {
 		log.Fatal(err.Error())
 	}
 	for _, px := range listPix.Pix {
-		log.Printf("E2E: %s, TxId: %s, Data: %s, Valor: %f\n", px.E2EId, px.TxId, px.Time.Format(time.RFC3339), px.Value)
+		log.Printf("E2E: %s, TxId: %s, Data: %s, Valor: %s\n", px.E2EId, px.TxId, px.Time.Format(time.RFC3339), px.Value)
 	}
 }
