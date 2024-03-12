@@ -1,7 +1,6 @@
 package bank
 
 import (
-	"crypto/tls"
 	"fmt"
 	"time"
 )
@@ -12,7 +11,7 @@ type Bank interface {
 	GetCredentials() Credentials
 	GetAuthorization() Authorization
 	SetAuthorization(authorization Authorization)
-	GetCertificate() *tls.Certificate
+	GetCertificate() *Certificate
 	GetUrl() string
 	GetAuthUrl() string
 }
@@ -22,10 +21,10 @@ type Context struct {
 	AuthURL       string
 	Credentials   Credentials
 	Authorization Authorization
-	Certificate   *tls.Certificate
+	Certificate   *Certificate
 }
 
-func (c *Context) GetCertificate() *tls.Certificate {
+func (c *Context) GetCertificate() *Certificate {
 	return c.Certificate
 }
 
@@ -56,7 +55,7 @@ func (c *Context) GetAuthUrl() string {
 	return c.AuthURL
 }
 
-func NewBank(baseURL string, authURL string, cert *tls.Certificate, credentials Credentials) Bank {
+func NewBank(baseURL string, authURL string, cert *Certificate, credentials Credentials) Bank {
 	var bank = Context{Credentials: credentials, BaseURL: baseURL, AuthURL: authURL, Certificate: cert}
 	if auth, exists := autorizationCache[fmt.Sprintf("%s:%s@%s", credentials.ClientId, credentials.ClientSecret, baseURL)]; exists {
 		bank.Authorization = auth

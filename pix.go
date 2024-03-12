@@ -2,7 +2,7 @@ package pixsdk
 
 import (
 	"context"
-	"crypto/tls"
+
 	"github.com/libercapital/pix-sdk-go/services/webhook"
 
 	"github.com/libercapital/pix-sdk-go/bank"
@@ -31,7 +31,8 @@ type Config struct {
 	BaseURL      string
 	ClientId     string
 	ClientSecret string
-	Certificate  *tls.Certificate
+	ClientCrt    string
+	ClientCrtKey string
 }
 
 func (c *Context) CreateWebhook(ctx context.Context, key string, webhook webhook.CreateWebhook) error {
@@ -55,7 +56,20 @@ func (c *Context) ListPix(listPix pix.ListPix) (pix.ListPixResponse, error) {
 }
 
 func (c *Context) setupConfig(config Config) {
-	var bank = bank.NewBank(config.BaseURL, config.AuthURL, config.Certificate, bank.NewCredentials(config.ClientId, config.ClientSecret))
+	var certificate *bank.Certificate
+
+	if config.ClientCrt != "" && config.ClientCrtKey != "" {
+		c := bank.NewCertificate(config.ClientCrt, config.ClientCrtKey)
+		certificate = &c
+	}
+
+	var bank = bank.NewBank(
+		config.BaseURL,
+		config.AuthURL,
+		certificate,
+		bank.NewCredentials(config.ClientId, config.ClientSecret),
+	)
+
 	var baseService = services.NewBaseService(bank)
 	var authService = auth.NewAuthService(bank, baseService)
 	baseService.SetAuthorizer(authService)
