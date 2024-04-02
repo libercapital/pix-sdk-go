@@ -70,7 +70,7 @@ type ListPixParameter struct {
 	Cpf           string    `url:"cpf,omitempty"`
 	Cnpj          string    `url:"cnpj,omitempty"`
 	ActualPage    int32     `url:"paginacao.paginaAtual,omitempty"`
-	ItensPerPage  int32     `url:"pagina.itensPorPagina,omitempty"`
+	ItensPerPage  int32     `url:"paginacao.itensPorPagina,omitempty"`
 }
 
 func (l ListPixParameter) ToQueryString() string {
