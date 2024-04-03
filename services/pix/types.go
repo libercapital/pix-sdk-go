@@ -62,8 +62,8 @@ type ListPixParameterPaginationResponse struct {
 }
 
 type ListPixParameter struct {
-	StartDate     time.Time `url:"inicio" layout:"2006-01-02T15:04:05Z"`
-	EndDate       time.Time `url:"fim" layout:"2006-01-02T15:04:05Z"`
+	StartDate     time.Time `url:"inicio" layout:"2006-01-02T15:04:05"`
+	EndDate       time.Time `url:"fim" layout:"2006-01-02T15:04:05"`
 	TxId          string    `url:"txid,omitempty"`
 	HasTxId       bool      `url:"txidPresente,omitempty"`
 	HasDevolution bool      `url:"devolucaoPresente,omitempty"`
