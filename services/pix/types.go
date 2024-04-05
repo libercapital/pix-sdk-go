@@ -23,8 +23,8 @@ type Devolution struct {
 type Pix struct {
 	E2EId      string       `json:"endToEndId"`
 	TxId       string       `json:"txid"`
-	Value      string       `json:"valor"`
-	Time       time.Time    `json:"horario" layout:"2006-01-02T15:04:05.999"`
+	Value      float64      `json:"valor"`
+	Time       time.Time    `json:"horario" layout:"2006-01-02T15:04:05Z"`
 	Key        string       `json:"chave"`
 	PayerInfo  string       `json:"infoPagador"`
 	Devolution []Devolution `json:"devolucoes"`
