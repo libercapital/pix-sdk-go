@@ -24,7 +24,7 @@ type Pix struct {
 	E2EId      string       `json:"endToEndId"`
 	TxId       string       `json:"txid"`
 	Value      string       `json:"valor"`
-	Time       time.Time    `json:"horario"`
+	Time       time.Time    `json:"horario" layout:"2006-01-02T15:04:05Z"`
 	Key        string       `json:"chave"`
 	PayerInfo  string       `json:"infoPagador"`
 	Devolution []Devolution `json:"devolucoes"`
@@ -62,8 +62,8 @@ type ListPixParameterPaginationResponse struct {
 }
 
 type ListPixParameter struct {
-	StartDate     time.Time `url:"inicio" layout:"2006-01-02T15:04:05"`
-	EndDate       time.Time `url:"fim" layout:"2006-01-02T15:04:05"`
+	StartDate     time.Time `url:"inicio" layout:"2006-01-02T15:04:05Z"`
+	EndDate       time.Time `url:"fim" layout:"2006-01-02T15:04:05Z"`
 	TxId          string    `url:"txid,omitempty"`
 	HasTxId       bool      `url:"txidPresente,omitempty"`
 	HasDevolution bool      `url:"devolucaoPresente,omitempty"`
